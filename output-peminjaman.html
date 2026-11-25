@@ -1,0 +1,118 @@
+<!doctype html>
+<html lang="id">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Detail Peminjaman | Novella</title>
+    <link rel="stylesheet" href="output-peminjaman.css" />
+  </head>
+  <body>
+    <div class="container">
+      <div class="success-icon">✓</div>
+
+      <header>
+        <h1>Novella.</h1>
+        <h2>Pengajuan Berhasil!</h2>
+        <p>Terima kasih telah mengajukan peminjaman buku di Novella Library.</p>
+      </header>
+
+      <section class="detail">
+        <h3>Detail Peminjaman</h3>
+
+        <div class="detail-row">
+          <span>Nama Lengkap</span>
+          <strong id="nama">-</strong>
+        </div>
+
+        <div class="detail-row">
+          <span>NISN</span>
+          <strong id="nisn">-</strong>
+        </div>
+
+        <div class="detail-row">
+          <span>Email</span>
+          <strong id="email">-</strong>
+        </div>
+
+        <div class="detail-row">
+          <span>Buku yang Dipinjam</span>
+          <strong id="buku">-</strong>
+        </div>
+
+        <div class="detail-row">
+          <span>Tanggal Peminjaman</span>
+          <strong id="tanggalPinjam">-</strong>
+        </div>
+
+        <div class="detail-row">
+          <span>Tanggal Pengembalian</span>
+          <strong id="tanggalKembali">-</strong>
+        </div>
+
+        <div class="detail-row">
+          <span>Catatan</span>
+          <strong id="catatan">-</strong>
+        </div>
+
+        <div class="status-box">
+          <span>Status Pengajuan</span>
+          <strong id="status">Menunggu Persetujuan</strong>
+        </div>
+
+        <p id="alasan" class="reason"></p>
+      </section>
+
+      <div class="buttons">
+        <a href="index.html" class="primary-btn">Ajukan Lagi</a>
+        <a href="output-peminjaman.html" class="secondary-btn"
+          >Lihat Riwayat Peminjaman</a
+        >
+        <a href="crud.html" class="secondary-btn">Kelola Peminjaman</a>
+      </div>
+
+      <p class="footer">© 2026 Novella Library. All Rights Reserved.</p>
+    </div>
+
+    <script>
+      const daftar =
+        JSON.parse(localStorage.getItem("novellaPeminjaman")) || [];
+      const idTerakhir = localStorage.getItem("novellaPengajuanTerakhir");
+
+      const data = daftar.find(function (item) {
+        return String(item.id) === String(idTerakhir);
+      });
+
+      function tampilkan(id, nilai) {
+        document.getElementById(id).textContent = nilai || "-";
+      }
+
+      function tanggalIndonesia(tanggal) {
+        if (!tanggal) return "-";
+
+        return new Date(tanggal + "T00:00:00").toLocaleDateString("id-ID", {
+          day: "numeric",
+          month: "long",
+          year: "numeric",
+        });
+      }
+
+      if (data) {
+        tampilkan("nama", data.nama);
+        tampilkan("nisn", data.nisn);
+        tampilkan("email", data.email);
+        tampilkan("buku", data.buku.join(", "));
+        tampilkan("tanggalPinjam", tanggalIndonesia(data.tanggalPinjam));
+        tampilkan("tanggalKembali", tanggalIndonesia(data.tanggalKembali));
+        tampilkan("catatan", data.catatan);
+        tampilkan("status", data.status);
+        tampilkan(
+          "alasan",
+          data.alasan ? "Alasan penolakan: " + data.alasan : "",
+        );
+      } else {
+        document.querySelector(".detail").innerHTML =
+          "<h3>Data peminjaman tidak ditemukan.</h3><p>Silakan ajukan peminjaman terlebih dahulu.</p>";
+      }
+    </script>
+  </body>
+</html>

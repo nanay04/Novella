@@ -1,0 +1,187 @@
+<!doctype html>
+<html lang="id">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Kritik & Saran | Novella</title>
+    <link rel="stylesheet" href="kritik-saran.css" />
+  </head>
+
+  <body>
+    <div class="container">
+      <!-- SIDEBAR -->
+      <aside class="sidebar">
+        <div class="logo">
+          <h2>Novella.</h2>
+          <p>Library Website</p>
+        </div>
+
+        <div class="menu">
+          <p class="menu-title">MENU UTAMA</p>
+
+          <a href="dashboard.html">Dashboard</a>
+          <a href="katalog.html">Katalog Buku</a>
+          <a href="peminjaman.html">Peminjaman</a>
+          <a href="kritik-saran.html" class="active">Kritik & Saran</a>
+        </div>
+
+        <div class="logout">
+          <hr />
+          <a href="loginform.html">Logout</a>
+        </div>
+      </aside>
+
+      <!-- KONTEN UTAMA -->
+      <main class="main-content">
+        <!-- HEADER -->
+        <header class="page-header">
+          <div>
+            <p class="subtitle">NOVELLA LIBRARY</p>
+            <h1>Kritik & Saran</h1>
+            <p class="header-description">
+              Setiap masukan berarti bagi kami untuk menciptakan pengalaman
+              membaca yang lebih baik.
+            </p>
+          </div>
+        </header>
+
+        <!-- FORM DAN INFORMASI -->
+        <div class="content-grid">
+          <!-- FORMULIR -->
+          <section class="form-card">
+            <div class="section-heading">
+              <h2>Kirim Masukan</h2>
+              <p>
+                Sampaikan pendapat, kritik, atau saran kamu mengenai layanan
+                Novella.
+              </p>
+            </div>
+
+            <form id="formKritik">
+              <div class="form-group">
+                <label for="nama">Nama Lengkap</label>
+                <input
+                  type="text"
+                  id="nama"
+                  placeholder="Masukkan nama kamu"
+                  required
+                />
+              </div>
+
+              <div class="form-group">
+                <label for="email">Alamat Email</label>
+                <input
+                  type="email"
+                  id="email"
+                  placeholder="contoh@email.com"
+                  required
+                />
+              </div>
+
+              <div class="form-group">
+                <label for="jenis">Jenis Masukan</label>
+                <select id="jenis" required>
+                  <option value="">Pilih jenis masukan</option>
+                  <option value="Kritik">Kritik</option>
+                  <option value="Saran">Saran</option>
+                </select>
+              </div>
+
+              <div class="form-group">
+                <label for="pesan">Pesan</label>
+                <textarea
+                  id="pesan"
+                  rows="5"
+                  placeholder="Tuliskan kritik atau saran kamu di sini..."
+                  required
+                ></textarea>
+              </div>
+
+              <button type="submit" class="submit-button">Kirim Masukan</button>
+
+              <p id="pesanBerhasil" class="success-message"></p>
+            </form>
+          </section>
+
+          <!-- INFORMASI -->
+          <div class="information-column">
+            <section class="info-card about-card">
+              <h2>Tentang Novella</h2>
+
+              <p>
+                Novella merupakan website perpustakaan yang menyediakan
+                informasi koleksi buku dan layanan peminjaman untuk membantu
+                pengunjung menemukan bacaan yang mereka sukai.
+              </p>
+
+              <p>
+                Kami percaya bahwa setiap buku memiliki cerita dan pengetahuan
+                yang layak untuk dibagikan.
+              </p>
+            </section>
+
+            <section class="info-card contact-card">
+              <h2>Hubungi Kami</h2>
+
+              <p>
+                Punya pertanyaan atau ingin mengetahui informasi terbaru dari
+                Novella? Kunjungi media sosial kami.
+              </p>
+
+              <a
+                href="https://www.instagram.com/nnaalf._?gwpx=dzM2c2RldHkwY2d3"
+                target="_blank"
+                class="instagram-link"
+              >
+                <span class="instagram-icon"></span>
+                <span>
+                  <strong>Instagram Novella</strong>
+                  <small>Kunjungi akun Instagram kami</small>
+                </span>
+                <span class="link-arrow">↗</span>
+              </a>
+            </section>
+          </div>
+        </div>
+
+        <!-- FOOTER -->
+        <footer class="footer">
+          <p>© 2026 Novella Library. All Rights Reserved.</p>
+        </footer>
+      </main>
+    </div>
+
+    <!-- JAVASCRIPT -->
+    <script>
+      const formKritik = document.getElementById("formKritik");
+      const pesanBerhasil = document.getElementById("pesanBerhasil");
+
+      formKritik.addEventListener("submit", function (event) {
+        event.preventDefault();
+
+        const dataKritik = {
+          nama: document.getElementById("nama").value,
+          email: document.getElementById("email").value,
+          jenis: document.getElementById("jenis").value,
+          pesan: document.getElementById("pesan").value,
+          tanggal: new Date().toLocaleDateString("id-ID"),
+        };
+
+        let daftarKritik =
+          JSON.parse(localStorage.getItem("novellaKritikSaran")) || [];
+
+        daftarKritik.push(dataKritik);
+
+        localStorage.setItem(
+          "novellaKritikSaran",
+          JSON.stringify(daftarKritik),
+        );
+
+        pesanBerhasil.textContent =
+          "Terima kasih! Masukan kamu berhasil dikirim.";
+
+        formKritik.reset();
+      });
+    </script>
+  </body>
+</html>

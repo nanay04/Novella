@@ -1,0 +1,298 @@
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+body {
+  font-family: "Outfit", sans-serif;
+  background: #f8f7f2;
+  color: #243b53;
+  padding: 45px 20px;
+}
+
+.container {
+  width: 100%;
+  max-width: 1120px;
+  margin: auto;
+  background: #ffffff;
+  padding: 45px;
+  border-radius: 28px;
+  box-shadow: 0 12px 40px rgba(36, 59, 83, 0.09);
+}
+
+.header {
+  text-align: center;
+  margin-bottom: 30px;
+}
+
+.header h1 {
+  font-size: 46px;
+  font-weight: 800;
+  letter-spacing: -1.5px;
+}
+
+.header h3 {
+  font-size: 17px;
+  font-weight: 500;
+  color: #71869a;
+  margin-top: 3px;
+}
+
+.header p {
+  font-size: 14px;
+  color: #718096;
+  margin-top: 12px;
+}
+
+.intro {
+  margin-bottom: 30px;
+}
+
+.intro h2 {
+  font-size: 25px;
+  margin-bottom: 8px;
+}
+
+.intro p,
+.description {
+  font-size: 14px;
+  color: #718096;
+  line-height: 1.8;
+}
+
+.section-title {
+  font-size: 18px;
+  margin-top: 30px;
+  margin-bottom: 18px;
+  padding-left: 13px;
+  border-left: 4px solid #243b53;
+}
+
+.form-group {
+  display: flex;
+  flex-direction: column;
+  margin-bottom: 22px;
+}
+
+.form-group label {
+  font-size: 14px;
+  font-weight: 600;
+  margin-bottom: 9px;
+}
+
+.form-group input,
+.form-group textarea {
+  width: 100%;
+  padding: 15px 18px;
+  font-family: "Outfit", sans-serif;
+  font-size: 14px;
+  color: #243b53;
+  background: #ffffff;
+  border: 1px solid #d5dee5;
+  border-radius: 12px;
+  outline: none;
+}
+
+.form-group input {
+  height: 53px;
+}
+
+.form-group textarea {
+  resize: vertical;
+  min-height: 120px;
+}
+
+.form-group input:focus,
+.form-group textarea:focus {
+  border-color: #243b53;
+  box-shadow: 0 0 0 3px rgba(36, 59, 83, 0.08);
+}
+
+.form-group input[readonly] {
+  background: #e8edf2;
+  cursor: not-allowed;
+}
+
+.form-group small {
+  font-size: 11px;
+  color: #718096;
+  margin-top: 7px;
+}
+
+.description {
+  margin-top: -8px;
+  margin-bottom: 15px;
+}
+
+.book-list {
+  display: grid;
+  grid-template-columns: repeat(2, 1fr);
+  gap: 12px;
+  padding: 22px;
+  background: #e8edf2;
+  border-radius: 16px;
+}
+
+.book-option {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  padding: 14px 15px;
+  background: #ffffff;
+  border: 1px solid transparent;
+  border-radius: 11px;
+  cursor: pointer;
+  transition: 0.25s;
+}
+
+.book-option:hover {
+  border-color: #71869a;
+  transform: translateY(-2px);
+}
+
+.book-option:has(input:checked) {
+  border-color: #243b53;
+  background: #f1f4f7;
+}
+
+.book-option input {
+  width: 17px;
+  height: 17px;
+  accent-color: #243b53;
+  flex-shrink: 0;
+}
+
+.book-option span {
+  display: flex;
+  flex-direction: column;
+  gap: 3px;
+}
+
+.book-option strong {
+  font-size: 13px;
+  font-weight: 600;
+}
+
+.book-option small {
+  font-size: 11px;
+  color: #718096;
+}
+
+.date-container {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 22px;
+}
+
+.rules {
+  margin-top: 28px;
+  padding: 23px 25px;
+  background: #e8edf2;
+  border-radius: 15px;
+  border-left: 4px solid #243b53;
+}
+
+.rules h3 {
+  font-size: 16px;
+  margin-bottom: 12px;
+}
+
+.rules p {
+  font-size: 12px;
+  line-height: 2;
+  color: #526a80;
+}
+
+.button-group {
+  display: flex;
+  justify-content: center;
+  gap: 12px;
+  margin-top: 28px;
+}
+
+.submit-btn,
+.reset-btn {
+  min-height: 53px;
+  padding: 0 28px;
+  border: none;
+  border-radius: 30px;
+  font-family: "Outfit", sans-serif;
+  font-size: 14px;
+  font-weight: 600;
+  cursor: pointer;
+  transition: 0.3s;
+}
+
+.submit-btn {
+  background: #243b53;
+  color: #ffffff;
+}
+
+.submit-btn:hover {
+  background: #344f6a;
+  transform: translateY(-2px);
+}
+
+.reset-btn {
+  background: #e8edf2;
+  color: #243b53;
+}
+
+.reset-btn:hover {
+  background: #d5dee5;
+}
+
+.manage-btn {
+  display: block;
+  width: fit-content;
+  margin: 25px auto 0;
+  padding: 15px 25px;
+  background: #405a75;
+  color: #ffffff;
+  text-decoration: none;
+  text-align: center;
+  border-radius: 30px;
+  font-size: 14px;
+  font-weight: 600;
+}
+
+.manage-btn:hover {
+  background: #243b53;
+}
+
+.footer-text {
+  text-align: center;
+  font-size: 12px;
+  color: #8997a5;
+  margin-top: 25px;
+}
+
+@media (max-width: 768px) {
+  body {
+    padding: 20px 12px;
+  }
+
+  .container {
+    padding: 28px 20px;
+  }
+
+  .header h1 {
+    font-size: 36px;
+  }
+
+  .book-list,
+  .date-container {
+    grid-template-columns: 1fr;
+  }
+
+  .button-group {
+    flex-direction: column;
+  }
+
+  .submit-btn,
+  .reset-btn,
+  .manage-btn {
+    width: 100%;
+  }
+}

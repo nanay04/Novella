@@ -1,0 +1,162 @@
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+body {
+  font-family: "Outfit", sans-serif;
+  background: #f8f7f2;
+  color: #243b53;
+  padding: 35px 20px;
+}
+
+.container {
+  max-width: 1250px;
+  margin: auto;
+  padding: 35px;
+  background: #ffffff;
+  border-radius: 20px;
+  box-shadow: 0 10px 35px rgba(36, 59, 83, 0.08);
+}
+
+header {
+  text-align: center;
+  margin-bottom: 30px;
+}
+
+header h1 {
+  font-size: 34px;
+}
+
+header h2 {
+  margin-top: 12px;
+  font-size: 25px;
+}
+
+header p {
+  margin-top: 8px;
+  color: #718096;
+  font-size: 14px;
+}
+
+.top-actions {
+  display: flex;
+  gap: 12px;
+  margin-bottom: 25px;
+  flex-wrap: wrap;
+}
+
+.top-actions a {
+  padding: 12px 18px;
+  background: #243b53;
+  color: #ffffff;
+  text-decoration: none;
+  border-radius: 8px;
+  font-size: 13px;
+}
+
+.top-actions a:hover {
+  background: #405a75;
+}
+
+.table-wrapper {
+  width: 100%;
+  overflow-x: auto;
+}
+
+table {
+  width: 100%;
+  border-collapse: collapse;
+  min-width: 850px;
+}
+
+th {
+  background: #243b53;
+  color: #ffffff;
+  font-size: 13px;
+  text-align: left;
+  padding: 15px;
+}
+
+td {
+  padding: 14px;
+  border-bottom: 1px solid #e8edf2;
+  font-size: 13px;
+  vertical-align: top;
+}
+
+.status {
+  font-weight: 600;
+}
+
+.actions {
+  min-width: 180px;
+}
+
+.actions button {
+  padding: 7px 9px;
+  margin: 3px;
+  border: none;
+  border-radius: 6px;
+  color: #ffffff;
+  font-family: "Outfit", sans-serif;
+  font-size: 11px;
+  cursor: pointer;
+}
+
+.actions button:disabled {
+  opacity: 0.4;
+  cursor: not-allowed;
+}
+
+.approve-btn {
+  background: #27834e;
+}
+
+.reject-btn,
+.delete-btn {
+  background: #bd4545;
+}
+
+.borrow-btn {
+  background: #3975a7;
+}
+
+.return-btn {
+  background: #687b8e;
+}
+
+.edit-btn {
+  background: #b18a35;
+}
+
+.empty-message {
+  text-align: center;
+  padding: 30px;
+  color: #718096;
+  font-size: 14px;
+}
+
+footer {
+  margin-top: 30px;
+  padding-top: 18px;
+  border-top: 1px solid #e8edf2;
+  text-align: center;
+  color: #8997a5;
+  font-size: 12px;
+}
+
+@media (max-width: 600px) {
+  .container {
+    padding: 22px 15px;
+  }
+
+  .top-actions {
+    flex-direction: column;
+  }
+
+  .top-actions a {
+    text-align: center;
+  }
+}

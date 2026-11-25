@@ -1,0 +1,164 @@
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+body {
+  font-family: "Outfit", sans-serif;
+  background: #f8f7f2;
+  color: #243b53;
+  padding: 35px 20px;
+}
+
+.container {
+  max-width: 1050px;
+  margin: auto;
+  padding: 40px;
+  background: #ffffff;
+  border-radius: 22px;
+  box-shadow: 0 10px 35px rgba(36, 59, 83, 0.08);
+}
+
+header {
+  text-align: center;
+  margin-bottom: 30px;
+}
+
+header h1 {
+  font-size: 36px;
+}
+
+header h2 {
+  font-size: 25px;
+  margin-top: 12px;
+}
+
+header p {
+  font-size: 13px;
+  color: #718096;
+  margin-top: 8px;
+  line-height: 1.7;
+}
+
+.navigation {
+  display: flex;
+  justify-content: center;
+  gap: 12px;
+  flex-wrap: wrap;
+  margin-bottom: 30px;
+}
+
+.navigation a {
+  padding: 11px 18px;
+  background: #243b53;
+  color: #ffffff;
+  text-decoration: none;
+  border-radius: 8px;
+  font-size: 13px;
+}
+
+.navigation a:hover {
+  background: #405a75;
+}
+
+.status-summary {
+  display: grid;
+  grid-template-columns: repeat(4, 1fr);
+  gap: 15px;
+  margin-bottom: 35px;
+}
+
+.status-summary div {
+  padding: 22px 12px;
+  background: #e8edf2;
+  border-radius: 12px;
+  text-align: center;
+}
+
+.status-summary h3 {
+  font-size: 25px;
+  margin-bottom: 5px;
+}
+
+.status-summary p {
+  font-size: 12px;
+  color: #718096;
+}
+
+.list-section h3 {
+  font-size: 20px;
+  margin-bottom: 18px;
+}
+
+.status-card {
+  padding: 22px;
+  margin-bottom: 15px;
+  background: #ffffff;
+  border: 1px solid #e1e7ed;
+  border-radius: 13px;
+}
+
+.status-card h4 {
+  font-size: 17px;
+  margin-bottom: 10px;
+}
+
+.status-card p {
+  font-size: 13px;
+  line-height: 1.8;
+  color: #718096;
+  overflow-wrap: anywhere;
+}
+
+.status-label {
+  display: inline-block;
+  margin-top: 13px;
+  padding: 8px 13px;
+  background: #e8edf2;
+  color: #243b53;
+  border-radius: 20px;
+  font-size: 12px;
+  font-weight: 600;
+}
+
+.reason {
+  color: #b43a3a !important;
+  margin-top: 8px;
+}
+
+.empty {
+  padding: 30px;
+  text-align: center;
+  color: #718096;
+  background: #f8f7f2;
+  border-radius: 12px;
+  font-size: 14px;
+}
+
+footer {
+  margin-top: 35px;
+  padding-top: 18px;
+  border-top: 1px solid #e8edf2;
+  text-align: center;
+  color: #8997a5;
+  font-size: 12px;
+}
+
+@media (max-width: 700px) {
+  .container {
+    padding: 25px 18px;
+  }
+
+  .status-summary {
+    grid-template-columns: repeat(2, 1fr);
+  }
+
+  .navigation {
+    flex-direction: column;
+  }
+
+  .navigation a {
+    text-align: center;
+  }
+}

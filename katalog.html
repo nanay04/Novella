@@ -1,0 +1,344 @@
+<!doctype html>
+<html lang="id">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Katalog Buku | Novella</title>
+    <link rel="stylesheet" href="katalog.css" />
+  </head>
+
+  <body>
+    <div class="container">
+      <!-- SIDEBAR -->
+      <aside class="sidebar">
+        <div class="logo">
+          <h2>Novella<span>.</span></h2>
+          <p>
+            Discover stories, explore knowledge, and find your next favorite
+            book.
+          </p>
+        </div>
+
+        <div class="menu">
+          <p class="menu-title">MENU UTAMA</p>
+          <a href="dashboard.html">Dashboard</a>
+          <a href="katalog.html" class="active">Katalog Buku</a>
+          <a href="peminjaman.html">Peminjaman</a>
+          <a href="kritik-saran.html">Kontak kami, Kritik & Saran</a>
+        </div>
+
+        <div class="logout">
+          <hr />
+          <a href="loginform.html">Logout</a>
+        </div>
+      </aside>
+
+      <!-- KONTEN UTAMA -->
+      <main class="content">
+        <header class="topbar">
+          <div>
+            <h3>Novella</h3>
+            <p>Library Novella</p>
+          </div>
+        </header>
+
+        <!-- HEADER KATALOG -->
+        <section class="catalog-header">
+          <p class="small-title">EXPLORE OUR COLLECTION</p>
+          <h1>Katalog Buku</h1>
+          <p class="catalog-description">
+            Temukan berbagai cerita menarik dan pengetahuan baru melalui koleksi
+            buku pilihan dari Novella.
+          </p>
+        </section>
+
+        <!-- DAFTAR BUKU -->
+        <section class="catalog">
+          <div class="catalog-title">
+            <h2>Koleksi Buku</h2>
+            <p>Jelajahi 10 koleksi buku pilihan dari Novella.</p>
+          </div>
+
+          <div class="book-container">
+            <div class="book-card">
+              <button class="book-image" onclick="bukaDetail(0)">
+                <img src="images/5cm.jpeg" alt="Buku 5 cm" />
+              </button>
+              <div class="book-info">
+                <h3>5 cm</h3>
+                <p>Donny Dhirgantoro</p>
+                <button class="detail-button" onclick="bukaDetail(0)">
+                  Lihat Detail
+                </button>
+              </div>
+            </div>
+
+            <div class="book-card">
+              <button class="book-image" onclick="bukaDetail(1)">
+                <img src="images/hujan.jpeg" alt="Buku Hujan" />
+              </button>
+              <div class="book-info">
+                <h3>Hujan</h3>
+                <p>Tere Liye</p>
+                <button class="detail-button" onclick="bukaDetail(1)">
+                  Lihat Detail
+                </button>
+              </div>
+            </div>
+
+            <div class="book-card">
+              <button class="book-image" onclick="bukaDetail(2)">
+                <img
+                  src="images/laskar pelangi.jpeg"
+                  alt="Buku Laskar Pelangi"
+                />
+              </button>
+              <div class="book-info">
+                <h3>Laskar Pelangi</h3>
+                <p>Andrea Hirata</p>
+                <button class="detail-button" onclick="bukaDetail(2)">
+                  Lihat Detail
+                </button>
+              </div>
+            </div>
+
+            <div class="book-card">
+              <button class="book-image" onclick="bukaDetail(3)">
+                <img
+                  src="images/laut bercerita.jpeg"
+                  alt="Buku Laut Bercerita"
+                />
+              </button>
+              <div class="book-info">
+                <h3>Laut Bercerita</h3>
+                <p>Leila S. Chudori</p>
+                <button class="detail-button" onclick="bukaDetail(3)">
+                  Lihat Detail
+                </button>
+              </div>
+            </div>
+
+            <div class="book-card">
+              <button class="book-image" onclick="bukaDetail(4)">
+                <img
+                  src="images/negeri 5 menara.jpeg"
+                  alt="Buku Negeri 5 Menara"
+                />
+              </button>
+              <div class="book-info">
+                <h3>Negeri 5 Menara</h3>
+                <p>Ahmad Fuadi</p>
+                <button class="detail-button" onclick="bukaDetail(4)">
+                  Lihat Detail
+                </button>
+              </div>
+            </div>
+
+            <div class="book-card">
+              <button class="book-image" onclick="bukaDetail(5)">
+                <img src="images/perahu kertas.jpeg" alt="Buku Perahu Kertas" />
+              </button>
+              <div class="book-info">
+                <h3>Perahu Kertas</h3>
+                <p>Dee Lestari</p>
+                <button class="detail-button" onclick="bukaDetail(5)">
+                  Lihat Detail
+                </button>
+              </div>
+            </div>
+
+            <div class="book-card">
+              <button class="book-image" onclick="bukaDetail(6)">
+                <img src="images/sang pemimpi.jpeg" alt="Buku Sang Pemimpi" />
+              </button>
+              <div class="book-info">
+                <h3>Sang Pemimpi</h3>
+                <p>Andrea Hirata</p>
+                <button class="detail-button" onclick="bukaDetail(6)">
+                  Lihat Detail
+                </button>
+              </div>
+            </div>
+
+            <div class="book-card">
+              <button class="book-image" onclick="bukaDetail(7)">
+                <img
+                  src="images/seporsi mie ayam.jpeg"
+                  alt="Buku Seporsi Mie Ayam Sebelum Mati"
+                />
+              </button>
+              <div class="book-info">
+                <h3>Seporsi Mie Ayam Sebelum Mati</h3>
+                <p>Brian Khrisna</p>
+                <button class="detail-button" onclick="bukaDetail(7)">
+                  Lihat Detail
+                </button>
+              </div>
+            </div>
+
+            <div class="book-card">
+              <button class="book-image" onclick="bukaDetail(8)">
+                <img
+                  src="images/the montains is you.jpeg"
+                  alt="Buku The Mountain Is You"
+                />
+              </button>
+              <div class="book-info">
+                <h3>The Mountain Is You</h3>
+                <p>Brianna Wiest</p>
+                <button class="detail-button" onclick="bukaDetail(8)">
+                  Lihat Detail
+                </button>
+              </div>
+            </div>
+
+            <div class="book-card">
+              <button class="book-image" onclick="bukaDetail(9)">
+                <img
+                  src="images/the psychology.jpeg"
+                  alt="Buku The Psychology of Money"
+                />
+              </button>
+              <div class="book-info">
+                <h3>The Psychology of Money</h3>
+                <p>Morgan Housel</p>
+                <button class="detail-button" onclick="bukaDetail(9)">
+                  Lihat Detail
+                </button>
+              </div>
+            </div>
+          </div>
+        </section>
+
+        <!-- POP-UP DETAIL BUKU -->
+        <div class="modal" id="detailModal" onclick="tutupJikaLuar(event)">
+          <div class="modal-content">
+            <button class="close-button" onclick="tutupDetail()">×</button>
+            <div id="isiDetail"></div>
+          </div>
+        </div>
+
+        <!-- FOOTER -->
+        <footer>
+          <p>© 2026 Novella Library. All Rights Reserved.</p>
+        </footer>
+      </main>
+    </div>
+
+    <!-- JAVASCRIPT -->
+    <script>
+      const daftarBuku = [
+        {
+          judul: "5 cm",
+          penulis: "Donny Dhirgantoro",
+          gambar: "images/5cm.jpeg",
+          kategori: "Novel Persahabatan",
+          sinopsis:
+            "Kisah lima sahabat yang memiliki mimpi dan perjalanan untuk membuktikan bahwa tidak ada yang mustahil jika disertai keyakinan dan usaha.",
+        },
+        {
+          judul: "Hujan",
+          penulis: "Tere Liye",
+          gambar: "images/hujan.jpeg",
+          kategori: "Novel Fiksi",
+          sinopsis:
+            "Kisah Lail dan perjalanan hidupnya menghadapi kehilangan, persahabatan, kenangan, serta pilihan di tengah perubahan dunia.",
+        },
+        {
+          judul: "Laskar Pelangi",
+          penulis: "Andrea Hirata",
+          gambar: "images/laskar pelangi.jpeg",
+          kategori: "Novel Inspiratif",
+          sinopsis:
+            "Perjalanan sepuluh anak dari Belitung yang berjuang mendapatkan pendidikan dan mengejar cita-cita meskipun memiliki banyak keterbatasan.",
+        },
+        {
+          judul: "Laut Bercerita",
+          penulis: "Leila S. Chudori",
+          gambar: "images/laut bercerita.jpeg",
+          kategori: "Novel Sejarah",
+          sinopsis:
+            "Kisah tentang persahabatan, keluarga, perjuangan, dan kehilangan yang berlatar peristiwa politik Indonesia.",
+        },
+        {
+          judul: "Negeri 5 Menara",
+          penulis: "Ahmad Fuadi",
+          gambar: "images/negeri 5 menara.jpeg",
+          kategori: "Novel Inspiratif",
+          sinopsis:
+            "Kisah enam santri yang belajar di sebuah pesantren dan membangun mimpi besar untuk masa depan mereka.",
+        },
+        {
+          judul: "Perahu Kertas",
+          penulis: "Dee Lestari",
+          gambar: "images/perahu kertas.jpeg",
+          kategori: "Novel Romantis",
+          sinopsis:
+            "Kisah Kugy dan Keenan yang dipertemukan oleh mimpi, kreativitas, persahabatan, dan perjalanan menemukan cinta.",
+        },
+        {
+          judul: "Sang Pemimpi",
+          penulis: "Andrea Hirata",
+          gambar: "images/sang pemimpi.jpeg",
+          kategori: "Novel Inspiratif",
+          sinopsis:
+            "Perjalanan Ikal dan sahabatnya dalam mempertahankan mimpi serta berjuang meraih pendidikan dan masa depan yang lebih baik.",
+        },
+        {
+          judul: "Seporsi Mie Ayam Sebelum Mati",
+          penulis: "Brian Khrisna",
+          gambar: "images/seporsi mie ayam.jpeg",
+          kategori: "Novel Fiksi",
+          sinopsis:
+            "Kisah tentang kehidupan, pergulatan batin, dan bagaimana hal-hal sederhana dapat memberikan makna dalam perjalanan seseorang.",
+        },
+        {
+          judul: "The Mountain Is You",
+          penulis: "Brianna Wiest",
+          gambar: "images/the montains is you.jpeg",
+          kategori: "Pengembangan Diri",
+          sinopsis:
+            "Buku pengembangan diri yang membahas bagaimana mengenali kebiasaan yang menghambat diri dan membangun perubahan positif.",
+        },
+        {
+          judul: "The Psychology of Money",
+          penulis: "Morgan Housel",
+          gambar: "images/the psychology.jpeg",
+          kategori: "Psikologi & Keuangan",
+          sinopsis:
+            "Membahas hubungan antara perilaku manusia, cara berpikir, dan keputusan dalam mengelola uang.",
+        },
+      ];
+
+      function bukaDetail(nomor) {
+        const buku = daftarBuku[nomor];
+
+        document.getElementById("isiDetail").innerHTML = `
+          <div class="detail-layout">
+            <img src="${buku.gambar}" alt="${buku.judul}">
+            <div class="detail-info">
+              <p class="detail-category">${buku.kategori}</p>
+              <h2>${buku.judul}</h2>
+              <p class="detail-author">Penulis: ${buku.penulis}</p>
+              <h3>Sinopsis</h3>
+              <p class="detail-synopsis">${buku.sinopsis}</p>
+              <a href="index.html" class="borrow-button">Pinjam Buku</a>
+            </div>
+          </div>
+        `;
+
+        document.getElementById("detailModal").style.display = "flex";
+      }
+
+      function tutupDetail() {
+        document.getElementById("detailModal").style.display = "none";
+      }
+
+      function tutupJikaLuar(event) {
+        if (event.target.id === "detailModal") {
+          tutupDetail();
+        }
+      }
+    </script>
+  </body>
+</html>

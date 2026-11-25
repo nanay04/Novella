@@ -1,0 +1,153 @@
+<!doctype html>
+<html lang="id">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Status Peminjaman | Novella</title>
+    <link rel="stylesheet" href="peminjaman.css" />
+  </head>
+  <body>
+    <div class="container">
+      <header>
+        <h1>Novella.</h1>
+        <h2>Status Peminjaman</h2>
+        <p>Pantau perkembangan pengajuan peminjaman buku di Novella Library.</p>
+      </header>
+
+      <div class="navigation">
+        <a href="dashboard.html">Dashboard</a>
+        <a href="katalog.html">Katalog Buku</a>
+        <a href="index.html">Ajukan Peminjaman</a>
+      </div>
+
+      <section class="status-summary">
+        <div>
+          <h3 id="jumlahPengajuan">0</h3>
+          <p>Total Pengajuan</p>
+        </div>
+
+        <div>
+          <h3 id="jumlahMenunggu">0</h3>
+          <p>Menunggu</p>
+        </div>
+
+        <div>
+          <h3 id="jumlahDisetujui">0</h3>
+          <p>Disetujui</p>
+        </div>
+
+        <div>
+          <h3 id="jumlahDitolak">0</h3>
+          <p>Ditolak</p>
+        </div>
+      </section>
+
+      <section class="list-section">
+        <h3>Daftar Peminjaman</h3>
+        <div id="daftarPeminjaman"></div>
+      </section>
+
+      <footer>© 2026 Novella Library. All Rights Reserved.</footer>
+    </div>
+
+    <script>
+      function ambilData() {
+        return JSON.parse(localStorage.getItem("novellaPeminjaman")) || [];
+      }
+
+      function tanggalIndonesia(tanggal) {
+        if (!tanggal) return "-";
+
+        return new Date(tanggal + "T00:00:00").toLocaleDateString("id-ID", {
+          day: "numeric",
+          month: "long",
+          year: "numeric",
+        });
+      }
+
+      function statusAktif(data) {
+        const hariIni = new Date();
+        hariIni.setHours(0, 0, 0, 0);
+
+        const tanggalKembali = new Date(data.tanggalKembali + "T00:00:00");
+
+        if (
+          data.status !== "Dikembalikan" &&
+          data.status !== "Ditolak" &&
+          tanggalKembali < hariIni
+        ) {
+          return "Terlambat";
+        }
+
+        return data.status;
+      }
+
+      function tampilkanStatus() {
+        const daftar = ambilData();
+        const tempat = document.getElementById("daftarPeminjaman");
+
+        let menunggu = 0;
+        let disetujui = 0;
+        let ditolak = 0;
+
+        tempat.innerHTML = "";
+
+        document.getElementById("jumlahPengajuan").textContent = daftar.length;
+
+        if (daftar.length === 0) {
+          tempat.innerHTML =
+            "<p class='empty'>Belum ada pengajuan peminjaman.</p>";
+        }
+
+        daftar.forEach(function (data) {
+          const status = statusAktif(data);
+
+          if (status === "Menunggu Persetujuan") menunggu++;
+          if (
+            status === "Disetujui" ||
+            status === "Sedang Dipinjam" ||
+            status === "Dikembalikan"
+          )
+            disetujui++;
+          if (status === "Ditolak") ditolak++;
+
+          const kartu = document.createElement("div");
+          kartu.className = "status-card";
+
+          const judul = document.createElement("h4");
+          judul.textContent = data.nama;
+
+          const buku = document.createElement("p");
+          buku.textContent = "Buku: " + data.buku.join(", ");
+
+          const tanggal = document.createElement("p");
+          tanggal.textContent =
+            "Tanggal pinjam: " + tanggalIndonesia(data.tanggalPinjam);
+
+          const kembali = document.createElement("p");
+          kembali.textContent =
+            "Tanggal kembali: " + tanggalIndonesia(data.tanggalKembali);
+
+          const label = document.createElement("span");
+          label.className = "status-label";
+          label.textContent = status;
+
+          const alasan = document.createElement("p");
+          alasan.className = "reason";
+          alasan.textContent = data.alasan
+            ? "Alasan penolakan: " + data.alasan
+            : "";
+
+          kartu.append(judul, buku, tanggal, kembali, label, alasan);
+          tempat.appendChild(kartu);
+        });
+
+        document.getElementById("jumlahMenunggu").textContent = menunggu;
+        document.getElementById("jumlahDisetujui").textContent = disetujui;
+        document.getElementById("jumlahDitolak").textContent = ditolak;
+      }
+
+      tampilkanStatus();
+    </script>
+  </body>
+</html>

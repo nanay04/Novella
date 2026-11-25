@@ -1,0 +1,230 @@
+<!doctype html>
+<html lang="id">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Kelola Peminjaman | Novella</title>
+    <link rel="stylesheet" href="crud.css" />
+  </head>
+  <body>
+    <div class="container">
+      <header>
+        <h1>Novella.</h1>
+        <h2>Kelola Peminjaman</h2>
+        <p>Daftar pengajuan peminjaman buku perpustakaan Novella.</p>
+      </header>
+
+      <div class="top-actions">
+        <a href="index.html">Kembali ke Formulir</a>
+        <a href="peminjaman.html">Lihat Status Peminjaman</a>
+      </div>
+
+      <div class="table-wrapper">
+        <table>
+          <thead>
+            <tr>
+              <th>No.</th>
+              <th>Nama Peminjam</th>
+              <th>Buku</th>
+              <th>Tanggal Pinjam</th>
+              <th>Status</th>
+              <th>Aksi</th>
+            </tr>
+          </thead>
+          <tbody id="tabelPeminjaman"></tbody>
+        </table>
+      </div>
+
+      <p id="pesanKosong" class="empty-message"></p>
+
+      <footer>© 2026 Novella Library. All Rights Reserved.</footer>
+    </div>
+
+    <script>
+      function ambilData() {
+        return JSON.parse(localStorage.getItem("novellaPeminjaman")) || [];
+      }
+
+      function simpanData(data) {
+        localStorage.setItem("novellaPeminjaman", JSON.stringify(data));
+      }
+
+      function formatTanggal(tanggal) {
+        if (!tanggal) return "-";
+
+        return new Date(tanggal + "T00:00:00").toLocaleDateString("id-ID", {
+          day: "numeric",
+          month: "short",
+          year: "numeric",
+        });
+      }
+
+      function statusAktif(data) {
+        if (
+          data.status !== "Dikembalikan" &&
+          data.status !== "Ditolak" &&
+          data.tanggalKembali < new Date().toISOString().slice(0, 10)
+        ) {
+          return "Terlambat";
+        }
+
+        return data.status;
+      }
+
+      function tampilkanData() {
+        const daftar = ambilData();
+        const tabel = document.getElementById("tabelPeminjaman");
+        const pesan = document.getElementById("pesanKosong");
+
+        tabel.innerHTML = "";
+
+        if (daftar.length === 0) {
+          pesan.textContent = "Belum ada data peminjaman.";
+          return;
+        }
+
+        pesan.textContent = "";
+
+        daftar.forEach(function (data, index) {
+          const baris = document.createElement("tr");
+
+          const nomor = document.createElement("td");
+          nomor.textContent = index + 1;
+
+          const nama = document.createElement("td");
+          nama.textContent = data.nama;
+
+          const buku = document.createElement("td");
+          buku.textContent = data.buku.join(", ");
+
+          const tanggal = document.createElement("td");
+          tanggal.textContent = formatTanggal(data.tanggalPinjam);
+
+          const status = document.createElement("td");
+          status.textContent = statusAktif(data);
+          status.className = "status";
+
+          const aksi = document.createElement("td");
+          aksi.className = "actions";
+
+          const setuju = document.createElement("button");
+          setuju.textContent = "Setujui";
+          setuju.className = "approve-btn";
+          setuju.disabled = data.status !== "Menunggu Persetujuan";
+          setuju.onclick = function () {
+            ubahStatus(data.id, "Disetujui", "");
+          };
+
+          const tolak = document.createElement("button");
+          tolak.textContent = "Tolak";
+          tolak.className = "reject-btn";
+          tolak.disabled = data.status !== "Menunggu Persetujuan";
+          tolak.onclick = function () {
+            const alasan = prompt("Masukkan alasan penolakan:");
+
+            if (alasan === null) return;
+
+            if (alasan.trim() === "") {
+              alert("Alasan penolakan harus diisi.");
+              return;
+            }
+
+            ubahStatus(data.id, "Ditolak", alasan.trim());
+          };
+
+          const pinjam = document.createElement("button");
+          pinjam.textContent = "Sedang Dipinjam";
+          pinjam.className = "borrow-btn";
+          pinjam.disabled = data.status !== "Disetujui";
+          pinjam.onclick = function () {
+            ubahStatus(data.id, "Sedang Dipinjam", "");
+          };
+
+          const kembali = document.createElement("button");
+          kembali.textContent = "Dikembalikan";
+          kembali.className = "return-btn";
+          kembali.disabled = data.status !== "Sedang Dipinjam";
+          kembali.onclick = function () {
+            ubahStatus(data.id, "Dikembalikan", "");
+          };
+
+          const edit = document.createElement("button");
+          edit.textContent = "Edit Nama";
+          edit.className = "edit-btn";
+          edit.onclick = function () {
+            editNama(data.id);
+          };
+
+          const hapus = document.createElement("button");
+          hapus.textContent = "Hapus";
+          hapus.className = "delete-btn";
+          hapus.onclick = function () {
+            hapusData(data.id);
+          };
+
+          aksi.append(setuju, tolak, pinjam, kembali, edit, hapus);
+
+          baris.append(nomor, nama, buku, tanggal, status, aksi);
+          tabel.appendChild(baris);
+        });
+      }
+
+      function ubahStatus(id, statusBaru, alasan) {
+        const daftar = ambilData();
+
+        const data = daftar.find(function (item) {
+          return item.id === id;
+        });
+
+        if (data) {
+          data.status = statusBaru;
+          data.alasan = alasan;
+          simpanData(daftar);
+          tampilkanData();
+        }
+      }
+
+      function editNama(id) {
+        const daftar = ambilData();
+
+        const data = daftar.find(function (item) {
+          return item.id === id;
+        });
+
+        if (!data) return;
+
+        const namaBaru = prompt("Masukkan nama peminjam:", data.nama);
+
+        if (namaBaru === null) return;
+
+        if (namaBaru.trim() === "") {
+          alert("Nama tidak boleh kosong.");
+          return;
+        }
+
+        data.nama = namaBaru.trim();
+        simpanData(daftar);
+        tampilkanData();
+      }
+
+      function hapusData(id) {
+        const konfirmasi = confirm(
+          "Apakah kamu yakin ingin menghapus pengajuan ini?",
+        );
+
+        if (!konfirmasi) return;
+
+        let daftar = ambilData();
+
+        daftar = daftar.filter(function (item) {
+          return item.id !== id;
+        });
+
+        simpanData(daftar);
+        tampilkanData();
+      }
+
+      tampilkanData();
+    </script>
+  </body>
+</html>

@@ -1,0 +1,289 @@
+<!doctype html>
+<html lang="id">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Peminjaman Buku | Novella</title>
+    <link rel="stylesheet" href="index.css" />
+  </head>
+  <body>
+    <div class="container">
+      <header class="header">
+        <h1>Novella.</h1>
+        <h3>Every book holds a story.</h3>
+        <p>Selamat datang di Novella Library</p>
+      </header>
+
+      <section class="intro">
+        <h2>Form Peminjaman Buku</h2>
+        <p>
+          Silakan lengkapi data berikut untuk mengajukan peminjaman buku di
+          perpustakaan Novella.
+        </p>
+      </section>
+
+      <form id="formPeminjaman">
+        <h3 class="section-title">Identitas Peminjam</h3>
+
+        <div class="form-group">
+          <label for="nama">Nama Lengkap</label>
+          <input
+            type="text"
+            id="nama"
+            placeholder="Masukkan nama lengkap"
+            required
+          />
+        </div>
+
+        <div class="form-group">
+          <label for="nisn">Nomor Induk Siswa Nasional (NISN)</label>
+          <input
+            type="text"
+            id="nisn"
+            placeholder="Masukkan 10 digit NISN"
+            maxlength="10"
+            inputmode="numeric"
+            pattern="[0-9]{10}"
+            required
+          />
+          <small>NISN harus terdiri dari 10 angka.</small>
+        </div>
+
+        <div class="form-group">
+          <label for="email">Email</label>
+          <input
+            type="email"
+            id="email"
+            placeholder="Masukkan alamat email"
+            required
+          />
+        </div>
+
+        <h3 class="section-title">Pilihan Buku</h3>
+        <p class="description">Kamu dapat memilih lebih dari satu buku.</p>
+
+        <div class="book-list">
+          <label class="book-option">
+            <input
+              type="checkbox"
+              name="buku"
+              value="The Psychology of Money"
+            />
+            <span
+              ><strong>The Psychology of Money</strong
+              ><small>Morgan Housel</small></span
+            >
+          </label>
+
+          <label class="book-option">
+            <input type="checkbox" name="buku" value="Laut Bercerita" />
+            <span
+              ><strong>Laut Bercerita</strong
+              ><small>Leila S. Chudori</small></span
+            >
+          </label>
+
+          <label class="book-option">
+            <input type="checkbox" name="buku" value="Negeri 5 Menara" />
+            <span
+              ><strong>Negeri 5 Menara</strong><small>Ahmad Fuadi</small></span
+            >
+          </label>
+
+          <label class="book-option">
+            <input type="checkbox" name="buku" value="Perahu Kertas" />
+            <span
+              ><strong>Perahu Kertas</strong><small>Dee Lestari</small></span
+            >
+          </label>
+
+          <label class="book-option">
+            <input type="checkbox" name="buku" value="5 cm" />
+            <span><strong>5 cm</strong><small>Donny Dhirgantoro</small></span>
+          </label>
+
+          <label class="book-option">
+            <input type="checkbox" name="buku" value="Laskar Pelangi" />
+            <span
+              ><strong>Laskar Pelangi</strong><small>Andrea Hirata</small></span
+            >
+          </label>
+
+          <label class="book-option">
+            <input type="checkbox" name="buku" value="Hujan" />
+            <span><strong>Hujan</strong><small>Tere Liye</small></span>
+          </label>
+
+          <label class="book-option">
+            <input type="checkbox" name="buku" value="Sang Pemimpi" />
+            <span
+              ><strong>Sang Pemimpi</strong><small>Andrea Hirata</small></span
+            >
+          </label>
+
+          <label class="book-option">
+            <input type="checkbox" name="buku" value="The Mountain Is You" />
+            <span
+              ><strong>The Mountain Is You</strong
+              ><small>Brianna Wiest</small></span
+            >
+          </label>
+
+          <label class="book-option">
+            <input
+              type="checkbox"
+              name="buku"
+              value="Seporsi Mie Ayam Sebelum Mati"
+            />
+            <span
+              ><strong>Seporsi Mie Ayam Sebelum Mati</strong
+              ><small>Brian Khrisna</small></span
+            >
+          </label>
+        </div>
+
+        <h3 class="section-title">Jadwal Peminjaman</h3>
+
+        <div class="date-container">
+          <div class="form-group">
+            <label for="tanggalPinjam">Tanggal Peminjaman</label>
+            <input type="date" id="tanggalPinjam" required />
+          </div>
+
+          <div class="form-group">
+            <label for="tanggalKembali">Tanggal Pengembalian</label>
+            <input type="date" id="tanggalKembali" readonly required />
+            <small>Lama peminjaman maksimal 7 hari.</small>
+          </div>
+        </div>
+
+        <h3 class="section-title">Catatan Tambahan</h3>
+
+        <div class="form-group">
+          <label for="catatan">Catatan (Opsional)</label>
+          <textarea
+            id="catatan"
+            rows="5"
+            placeholder="Tuliskan catatan tambahan jika ada..."
+          ></textarea>
+        </div>
+
+        <div class="rules">
+          <h3>Ketentuan Peminjaman</h3>
+          <p>
+            Peminjam dapat memilih lebih dari satu buku dalam satu pengajuan.
+          </p>
+          <p>Lama peminjaman maksimal 7 hari.</p>
+          <p>Buku wajib dikembalikan sesuai tanggal yang ditentukan.</p>
+          <p>Pengajuan harus menunggu persetujuan petugas.</p>
+          <p>Periksa status peminjaman secara berkala.</p>
+        </div>
+
+        <div class="button-group">
+          <button type="submit" class="submit-btn">Ajukan Peminjaman</button>
+          <button type="reset" class="reset-btn">Reset</button>
+        </div>
+
+        <a href="crud.html" class="manage-btn"
+          >Lihat Detail & Kelola Peminjaman</a
+        >
+
+        <p class="footer-text">Thank you for choosing Novella Library.</p>
+      </form>
+    </div>
+
+    <script>
+      const form = document.getElementById("formPeminjaman");
+      const tanggalPinjam = document.getElementById("tanggalPinjam");
+      const tanggalKembali = document.getElementById("tanggalKembali");
+
+      function formatTanggal(tanggal) {
+        const tahun = tanggal.getFullYear();
+        const bulan = String(tanggal.getMonth() + 1).padStart(2, "0");
+        const hari = String(tanggal.getDate()).padStart(2, "0");
+
+        return tahun + "-" + bulan + "-" + hari;
+      }
+
+      function hitungTanggalKembali() {
+        if (!tanggalPinjam.value) {
+          tanggalKembali.value = "";
+          return;
+        }
+
+        const tanggal = new Date(tanggalPinjam.value + "T00:00:00");
+        tanggal.setDate(tanggal.getDate() + 7);
+
+        tanggalKembali.value = formatTanggal(tanggal);
+      }
+
+      const hariIni = new Date();
+      hariIni.setHours(0, 0, 0, 0);
+
+      tanggalPinjam.min = formatTanggal(hariIni);
+      tanggalPinjam.value = formatTanggal(hariIni);
+
+      hitungTanggalKembali();
+
+      tanggalPinjam.addEventListener("change", function () {
+        const pilihan = new Date(tanggalPinjam.value + "T00:00:00");
+
+        if (pilihan < hariIni) {
+          alert("Tanggal peminjaman tidak boleh sebelum hari ini.");
+          tanggalPinjam.value = formatTanggal(hariIni);
+        }
+
+        hitungTanggalKembali();
+      });
+
+      form.addEventListener("reset", function () {
+        setTimeout(function () {
+          tanggalPinjam.value = formatTanggal(new Date());
+          hitungTanggalKembali();
+        }, 0);
+      });
+
+      form.addEventListener("submit", function (event) {
+        event.preventDefault();
+
+        const bukuTerpilih = document.querySelectorAll(
+          'input[name="buku"]:checked',
+        );
+
+        if (bukuTerpilih.length === 0) {
+          alert("Silakan pilih minimal satu buku.");
+          return;
+        }
+
+        const daftarBuku = [];
+
+        bukuTerpilih.forEach(function (item) {
+          daftarBuku.push(item.value);
+        });
+
+        const data = {
+          id: Date.now(),
+          nama: document.getElementById("nama").value.trim(),
+          nisn: document.getElementById("nisn").value.trim(),
+          email: document.getElementById("email").value.trim(),
+          buku: daftarBuku,
+          tanggalPinjam: tanggalPinjam.value,
+          tanggalKembali: tanggalKembali.value,
+          catatan: document.getElementById("catatan").value.trim(),
+          status: "Menunggu Persetujuan",
+          alasan: "",
+        };
+
+        let daftar =
+          JSON.parse(localStorage.getItem("novellaPeminjaman")) || [];
+
+        daftar.push(data);
+
+        localStorage.setItem("novellaPeminjaman", JSON.stringify(daftar));
+        localStorage.setItem("novellaPengajuanTerakhir", data.id);
+
+        window.location.href = "output-peminjaman.html";
+      });
+    </script>
+  </body>
+</html>

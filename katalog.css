@@ -1,0 +1,418 @@
+/* PENGATURAN DASAR */
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+  font-family: "Outfit", sans-serif;
+}
+
+body {
+  background-color: #f8f7f2;
+  color: #243b53;
+}
+
+.container {
+  display: flex;
+  min-height: 100vh;
+}
+
+/* SIDEBAR */
+.sidebar {
+  width: 240px;
+  height: 100vh;
+  background-color: #243b53;
+  color: #ffffff;
+  padding: 30px 22px;
+  display: flex;
+  flex-direction: column;
+  position: sticky;
+  top: 0;
+  flex-shrink: 0;
+}
+
+.logo h2 {
+  font-size: 27px;
+}
+
+.logo h2 span {
+  color: #b8c9da;
+}
+
+.logo p {
+  font-size: 12px;
+  color: #d1dce7;
+  margin-top: 3px;
+}
+
+.menu {
+  margin-top: 55px;
+}
+
+.menu-title {
+  font-size: 11px;
+  color: #b8c9da;
+  margin-bottom: 15px;
+}
+
+.menu a,
+.logout a {
+  display: block;
+  text-decoration: none;
+  color: #ffffff;
+  padding: 12px;
+  margin-bottom: 8px;
+  border-radius: 7px;
+  font-size: 14px;
+}
+
+.menu a:hover,
+.menu a.active {
+  background-color: #405a75;
+}
+
+/* LOGOUT */
+.logout {
+  margin-top: auto;
+}
+
+.logout hr {
+  border: none;
+  border-top: 1px solid #52677d;
+  margin-bottom: 15px;
+}
+
+.logout a {
+  margin-bottom: 0;
+}
+
+.logout a:hover {
+  background-color: #405a75;
+}
+
+/* KONTEN UTAMA */
+.content {
+  flex: 1;
+  padding: 30px 40px;
+  min-width: 0;
+}
+
+.topbar {
+  margin-bottom: 35px;
+}
+
+.topbar h3 {
+  font-size: 24px;
+}
+
+.topbar p {
+  color: #718096;
+  font-size: 14px;
+  margin-top: 5px;
+}
+
+/* HEADER KATALOG */
+.catalog-header {
+  background-color: #e8edf2;
+  border-radius: 15px;
+  padding: 40px;
+  margin-bottom: 40px;
+}
+
+.small-title {
+  font-size: 12px;
+  font-weight: 600;
+  letter-spacing: 1px;
+  margin-bottom: 12px;
+  color: #718096;
+}
+
+.catalog-header h1 {
+  font-size: 34px;
+  margin-bottom: 12px;
+}
+
+.catalog-description {
+  color: #64748b;
+  font-size: 15px;
+  line-height: 1.7;
+  max-width: 550px;
+}
+
+/* JUDUL KOLEKSI */
+.catalog-title {
+  margin-bottom: 22px;
+}
+
+.catalog-title h2 {
+  font-size: 22px;
+  margin-bottom: 7px;
+}
+
+.catalog-title p {
+  color: #718096;
+  font-size: 14px;
+}
+
+/* GRID BUKU */
+.book-container {
+  display: grid;
+  grid-template-columns: repeat(4, 1fr);
+  gap: 22px;
+}
+
+/* CARD BUKU */
+.book-card {
+  background-color: #ffffff;
+  border: 1px solid #e8edf2;
+  border-radius: 12px;
+  overflow: hidden;
+  transition: 0.3s;
+}
+
+.book-card:hover {
+  transform: translateY(-5px);
+  box-shadow: 0 8px 20px rgba(36, 59, 83, 0.1);
+}
+
+/* GAMBAR BUKU */
+.book-image {
+  width: 100%;
+  height: 260px;
+  padding: 15px;
+  background-color: #e8edf2;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  border: none;
+  cursor: pointer;
+}
+
+.book-image img {
+  width: 100%;
+  height: 100%;
+  object-fit: contain;
+  border-radius: 5px;
+}
+
+/* INFORMASI BUKU */
+.book-info {
+  padding: 18px;
+}
+
+.book-info h3 {
+  font-size: 16px;
+  margin-bottom: 8px;
+  line-height: 1.4;
+}
+
+.book-info p {
+  font-size: 13px;
+  color: #718096;
+  margin-bottom: 13px;
+}
+
+.detail-button {
+  background-color: #e8edf2;
+  color: #243b53;
+  border: none;
+  padding: 9px 13px;
+  border-radius: 6px;
+  cursor: pointer;
+  font-size: 12px;
+}
+
+.detail-button:hover {
+  background-color: #d1dce7;
+}
+
+/* POP-UP DETAIL */
+.modal {
+  display: none;
+  position: fixed;
+  z-index: 10;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background-color: rgba(0, 0, 0, 0.55);
+  justify-content: center;
+  align-items: center;
+  padding: 20px;
+}
+
+.modal-content {
+  background-color: #ffffff;
+  width: 100%;
+  max-width: 650px;
+  padding: 30px;
+  border-radius: 14px;
+  position: relative;
+  max-height: 90vh;
+  overflow-y: auto;
+}
+
+.close-button {
+  position: absolute;
+  top: 12px;
+  right: 18px;
+  border: none;
+  background: none;
+  font-size: 30px;
+  color: #718096;
+  cursor: pointer;
+}
+
+.detail-layout {
+  display: flex;
+  gap: 25px;
+  align-items: flex-start;
+  padding-top: 10px;
+}
+
+.detail-layout img {
+  width: 180px;
+  max-height: 260px;
+  object-fit: contain;
+  background-color: #e8edf2;
+  border-radius: 8px;
+}
+
+.detail-info {
+  flex: 1;
+}
+
+.detail-category {
+  color: #718096;
+  font-size: 12px;
+  margin-bottom: 10px;
+}
+
+.detail-info h2 {
+  font-size: 23px;
+  margin-bottom: 10px;
+}
+
+.detail-author {
+  color: #718096;
+  font-size: 13px;
+  margin-bottom: 25px;
+}
+
+.detail-info h3 {
+  font-size: 15px;
+  margin-bottom: 8px;
+}
+
+.detail-synopsis {
+  font-size: 14px;
+  line-height: 1.7;
+  color: #64748b;
+  margin-bottom: 22px;
+}
+
+.borrow-button {
+  display: inline-block;
+  text-decoration: none;
+  background-color: #243b53;
+  color: #ffffff;
+  padding: 11px 18px;
+  border-radius: 7px;
+  font-size: 13px;
+}
+
+.borrow-button:hover {
+  background-color: #405a75;
+}
+
+/* FOOTER */
+footer {
+  margin-top: 45px;
+  padding-top: 20px;
+  border-top: 1px solid #e8edf2;
+  color: #718096;
+  font-size: 12px;
+}
+
+/* RESPONSIVE */
+@media (max-width: 1100px) {
+  .book-container {
+    grid-template-columns: repeat(3, 1fr);
+  }
+}
+
+@media (max-width: 900px) {
+  .book-container {
+    grid-template-columns: repeat(2, 1fr);
+  }
+}
+
+@media (max-width: 600px) {
+  .container {
+    flex-direction: column;
+  }
+
+  .sidebar {
+    width: 100%;
+    height: auto;
+    position: relative;
+  }
+
+  .menu {
+    margin-top: 25px;
+  }
+
+  .logout {
+    margin-top: 10px;
+  }
+
+  .content {
+    padding: 25px 18px;
+  }
+
+  .catalog-header {
+    padding: 30px 25px;
+  }
+
+  .catalog-header h1 {
+    font-size: 28px;
+  }
+
+  .book-container {
+    grid-template-columns: repeat(2, 1fr);
+    gap: 12px;
+  }
+
+  .book-image {
+    height: 190px;
+    padding: 10px;
+  }
+
+  .book-info {
+    padding: 12px;
+  }
+
+  .book-info h3 {
+    font-size: 14px;
+  }
+
+  .book-info p {
+    font-size: 12px;
+  }
+
+  .detail-layout {
+    flex-direction: column;
+    align-items: center;
+  }
+
+  .detail-layout img {
+    width: 150px;
+  }
+
+  .detail-info {
+    width: 100%;
+  }
+
+  .modal-content {
+    padding: 25px 20px;
+  }
+}
